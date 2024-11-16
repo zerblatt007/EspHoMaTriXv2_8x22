@@ -1095,16 +1095,16 @@ namespace esphome
   {
     if (this->display_alarm > 2)
     {
-      this->display->line(31, 2, 29, 0, this->alarm_color);
+      this->display->line(21, 2, 19, 0, this->alarm_color);
     }
     if (this->display_alarm > 1)
     {
-      this->display->draw_pixel_at(30, 0, this->alarm_color);
-      this->display->draw_pixel_at(31, 1, this->alarm_color);
+      this->display->draw_pixel_at(20, 0, this->alarm_color);
+      this->display->draw_pixel_at(21, 1, this->alarm_color);
     }
     if (this->display_alarm > 0)
     {
-      this->display->draw_pixel_at(31, 0, this->alarm_color);
+      this->display->draw_pixel_at(21, 0, this->alarm_color);
     }
   }
 
@@ -1112,18 +1112,18 @@ namespace esphome
   {
     if (this->display_rindicator > 2)
     {
-      this->display->line(31, 5, 29, 7, this->rindicator_color);
+      this->display->line(21, 5, 19, 7, this->rindicator_color);
     }
 
     if (this->display_rindicator > 1)
     {
-      this->display->draw_pixel_at(30, 7, this->rindicator_color);
-      this->display->draw_pixel_at(31, 6, this->rindicator_color);
+      this->display->draw_pixel_at(20, 7, this->rindicator_color);
+      this->display->draw_pixel_at(21, 6, this->rindicator_color);
     }
 
     if (this->display_rindicator > 0)
     {
-      this->display->draw_pixel_at(31, 7, this->rindicator_color);
+      this->display->draw_pixel_at(21, 7, this->rindicator_color);
     }
   }
 

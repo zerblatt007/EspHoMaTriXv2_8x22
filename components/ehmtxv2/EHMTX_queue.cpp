@@ -70,7 +70,7 @@ namespace esphome
 
   int EHMTX_queue::xpos()
   {
-    uint8_t width = 32;
+    uint8_t width = 22;
     uint8_t startx = 0;
     int result = 0;
     switch (this->mode)
@@ -97,7 +97,7 @@ namespace esphome
 #ifdef EHMTXv2_USE_RTL
     if (this->pixels_ < width)
     {
-      result = 32 - ceil((width - this->pixels_) / 2);
+      result = 22 - ceil((width - this->pixels_) / 2);
     }
     else
     {
@@ -160,11 +160,11 @@ namespace esphome
         break;
 #ifndef USE_ESP8266
       case MODE_BITMAP_SCREEN:
-        for (uint8_t x = 0; x < 32; x++)
+        for (uint8_t x = 0; x < 22; x++)
         {
           for (uint8_t y = 0; y < 8; y++)
           {
-            this->config_->display->draw_pixel_at(x, y, this->config_->bitmap[x + y * 32]);
+            this->config_->display->draw_pixel_at(x, y, this->config_->bitmap[x + y * 22]);
           }
         }
         break;
@@ -208,7 +208,7 @@ namespace esphome
         {
           color_ = (this->mode == MODE_RAINBOW_CLOCK) ? this->config_->rainbow_color : this->text_color;
           time_t ts = this->config_->clock->now().timestamp;
-          this->config_->display->strftime(xoffset + 15, yoffset, font, color_, display::TextAlign::BASELINE_CENTER, EHMTXv2_TIME_FORMAT,
+          this->config_->display->strftime(xoffset + 12, yoffset, font, color_, display::TextAlign::BASELINE_CENTER, EHMTXv2_TIME_FORMAT,
                                            this->config_->clock->now());
           if ((this->config_->clock->now().second % 2 == 0) && this->config_->show_seconds)
           {
@@ -303,7 +303,7 @@ namespace esphome
     int x, y, w, h;
     float display_duration;
 
-    uint8_t width = 32;
+    uint8_t width = 22;
     uint8_t startx = 0;
     uint16_t max_steps = 0;
 
@@ -327,7 +327,7 @@ namespace esphome
       display_duration = ceil((max_steps * EHMTXv2_SCROLL_INTERVALL) / 1000);
       this->screen_time_ = (display_duration > screen_time) ? display_duration : screen_time;
 #else
-      if (this->pixels_ < 32)
+      if (this->pixels_ < 22)
       {
         this->screen_time_ = screen_time;
       }
@@ -343,7 +343,7 @@ namespace esphome
     case MODE_BITMAP_SMALL:
     case MODE_ICON_SCREEN:
       startx = 8;
-      if (this->pixels_ < 23)
+      if (this->pixels_ < 15)
       {
         this->screen_time_ = screen_time;
       }
